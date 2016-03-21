@@ -5820,7 +5820,6 @@ button.close {
         margin-right: 5px; }
 
 .header-top .header-top-contents {
-  border: 1px solid red;
   height: 50px;
   margin: 0 auto;
   width: 87%; }
@@ -5855,4 +5854,8 @@ button.close {
   width: 87%;
   margin-left: 80px;
   color: #FFF; }
+
+#order-lists .price-selection {
+  float: right; }
+
 /*# sourceMappingURL=app.css.map */
