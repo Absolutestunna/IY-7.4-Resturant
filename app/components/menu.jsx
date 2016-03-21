@@ -5,15 +5,17 @@ var $ = require('jquery');
 var _ = require('underscore');
 require('backbone-react-component');
 
+var CartComponent = require('./cart.jsx');
+var cartCollection = require('./../scripts/collections/cartItems').CartCollection;
+var CartCollection = new cartCollection();
+
 
 
 var MenuPageComponent = React.createClass({
+  mixins: [Backbone.React.Component.mixin],
   render: function(){
-
     var categorySelection = _.uniq(this.props.collection.pluck('Category'));
-
     var menuShow = categorySelection.map(function(item){
-      console.log(item)
       var selected = this.props.collection.where({Category: item});
       return(
         <MenuCategory categoryName={item} key={item} collection={selected} />
@@ -48,10 +50,9 @@ var MenuPageComponent = React.createClass({
                 <div className="selections">
                   {menuShow}
                 </div>
-
             </div>
-            <div className="col-md-4">ORDERS</div>
-
+            <CartComponent
+               />
           </div>
         </div>
 
@@ -61,12 +62,18 @@ var MenuPageComponent = React.createClass({
 });
 
 var MenuCategory = React.createClass({
+  mixins: [Backbone.React.Component.mixin],
   render: function(){
     var menuSelection = this.props.collection.map(function(item){
       return(
-        <MenuItemComponent key={item.cid} model={item} />
+        <MenuItemComponent
+          key={item.cid}
+          model={item}
+          handleSelection = {this.handleSelection}
+          boundItemClick = {this.boundItemClick}
+          />
       );
-    });
+    }.bind(this));
 
     return (
       <div>
@@ -92,11 +99,23 @@ var MenuCategory = React.createClass({
 });
 
 var MenuItemComponent = React.createClass({
+  mixins: [Backbone.React.Component.mixin],
+  handleSelection: function(order){
+    CartCollection.add(order)
+  },
   render: function(){
     var model = this.props.model;
+    var boundItemClick = this.handleSelection.bind(this, model);
     return (
-      <li className="list-group-item">{model.get('Name')}</li>
+      <div>
+        <li onClick={boundItemClick} className="list-group-item" id="order-lists">
+          <span className="food-selection">{model.get('Name')}</span>
+          <span className="price-selection">{model.get('Price')}</span>
+        </li>
+      </div>
     );
   }
 });
+
+
 module.exports = MenuPageComponent;

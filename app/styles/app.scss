@@ -85,7 +85,6 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 
 .header-top {
   .header-top-contents {
-    border: 1px solid red;
     height: 50px;
     margin: 0 auto;
     width: 87%;
@@ -126,4 +125,10 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
     margin-left: 80px;
     color: #FFF;
 
+}
+
+#order-lists {
+  .price-selection {
+    float: right;
+  }
 }

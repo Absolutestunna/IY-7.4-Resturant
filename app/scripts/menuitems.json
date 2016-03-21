@@ -7,13 +7,11 @@
     "Name": "Fried Rice",
     "Price": 5000,
     "Category": "Rice"
-
   },
   {
     "Name": "Yellow Rice",
     "Price": 5500,
     "Category": "Rice"
-
   },
   {
     "Name": "Rice and Stew",
@@ -23,13 +21,11 @@
   {
     "Name": "Chicken Stew",
     "Price": 4900,
-    "Category": "chicken"
-
+    "Category": "Chicken"
   },
   {
     "Name": "Chocolate Thunder",
     "Price": 9000,
-    "Category": "dessert"
-
+    "Category": "Dessert"
   }
 ]

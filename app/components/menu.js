@@ -4,15 +4,17 @@ var $ = require('jquery');
 var _ = require('underscore');
 require('backbone-react-component');
 
+var CartComponent = require('./cart.jsx');
+var cartCollection = require('./../scripts/collections/cartItems').CartCollection;
+var CartCollection = new cartCollection();
+
 
 
 var MenuPageComponent = React.createClass({displayName: "MenuPageComponent",
+  mixins: [Backbone.React.Component.mixin],
   render: function(){
-
     var categorySelection = _.uniq(this.props.collection.pluck('Category'));
-
     var menuShow = categorySelection.map(function(item){
-      console.log(item)
       var selected = this.props.collection.where({Category: item});
       return(
         React.createElement(MenuCategory, {categoryName: item, key: item, collection: selected})
@@ -47,10 +49,9 @@ var MenuPageComponent = React.createClass({displayName: "MenuPageComponent",
                 React.createElement("div", {className: "selections"}, 
                   menuShow
                 )
-
             ), 
-            React.createElement("div", {className: "col-md-4"}, "ORDERS")
-
+            React.createElement(CartComponent, null
+               )
           )
         )
 
@@ -60,12 +61,18 @@ var MenuPageComponent = React.createClass({displayName: "MenuPageComponent",
 });
 
 var MenuCategory = React.createClass({displayName: "MenuCategory",
+  mixins: [Backbone.React.Component.mixin],
   render: function(){
     var menuSelection = this.props.collection.map(function(item){
       return(
-        React.createElement(MenuItemComponent, {key: item.cid, model: item})
+        React.createElement(MenuItemComponent, {
+          key: item.cid, 
+          model: item, 
+          handleSelection: this.handleSelection, 
+          boundItemClick: this.boundItemClick}
+          )
       );
-    });
+    }.bind(this));
 
     return (
       React.createElement("div", null, 
@@ -91,11 +98,23 @@ var MenuCategory = React.createClass({displayName: "MenuCategory",
 });
 
 var MenuItemComponent = React.createClass({displayName: "MenuItemComponent",
+  mixins: [Backbone.React.Component.mixin],
+  handleSelection: function(order){
+    CartCollection.add(order)
+  },
   render: function(){
     var model = this.props.model;
+    var boundItemClick = this.handleSelection.bind(this, model);
     return (
-      React.createElement("li", {className: "list-group-item"}, model.get('Name'))
+      React.createElement("div", null, 
+        React.createElement("li", {onClick: boundItemClick, className: "list-group-item", id: "order-lists"}, 
+          React.createElement("span", {className: "food-selection"}, model.get('Name')), 
+          React.createElement("span", {className: "price-selection"}, model.get('Price'))
+        )
+      )
     );
   }
 });
+
+
 module.exports = MenuPageComponent;
