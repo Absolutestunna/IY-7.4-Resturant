@@ -1,0 +1,31 @@
+[
+  {"Name": "Jollof Rice",
+    "Price": 3000,
+    "Category": "Rice"
+  },
+  {
+    "Name": "Fried Rice",
+    "Price": 5000,
+    "Category": "Rice"
+  },
+  {
+    "Name": "Yellow Rice",
+    "Price": 5500,
+    "Category": "Rice"
+  },
+  {
+    "Name": "Rice and Stew",
+    "Price": 4000,
+    "Category": "Rice"
+  },
+  {
+    "Name": "Chicken Stew",
+    "Price": 4900,
+    "Category": "Chicken"
+  },
+  {
+    "Name": "Chocolate Thunder",
+    "Price": 9000,
+    "Category": "Dessert"
+  }
+]
