@@ -6,22 +6,36 @@ var _ = require('underscore');
 require('backbone-react-component');
 
 var CartComponent = require('./cart.jsx');
-var cartCollection = require('./../scripts/collections/cartItems').CartCollection;
-var CartCollection = new cartCollection();
 
+// var CartCollection = require('./../scripts/collections/cartItems').CartCollection;
+// var cartCollection = new CartCollection();
+
+
+// var newTotal = item.get('price') + this.state.total;
+// this.setState({'total': newTotal});
 
 
 var MenuPageComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
+  getInitialState: function(){
+    return (
+      {'total': 0}
+    );
+  },
+  addItemToOrder: function(model, e){
+    e.preventDefault()
+    this.props.cartCollection.add(model)
+    this.forceUpdate()
+  },
   render: function(){
     var categorySelection = _.uniq(this.props.collection.pluck('Category'));
     var menuShow = categorySelection.map(function(item){
       var selected = this.props.collection.where({Category: item});
       return(
-        <MenuCategory categoryName={item} key={item} collection={selected} />
+        <MenuCategory categoryName={item} key={item} collection={selected} addItemToOrder={this.addItemToOrder} />
       )
-    }.bind(this));
 
+    }.bind(this));
     return (
       <div>
         <div className="container-fluid" id="fluid">
@@ -52,10 +66,10 @@ var MenuPageComponent = React.createClass({
                 </div>
             </div>
             <CartComponent
+              cartCollection={this.props.cartCollection}
                />
           </div>
         </div>
-
       </div>
     );
   }
@@ -69,8 +83,7 @@ var MenuCategory = React.createClass({
         <MenuItemComponent
           key={item.cid}
           model={item}
-          handleSelection = {this.handleSelection}
-          boundItemClick = {this.boundItemClick}
+          addItemToOrder={this.props.addItemToOrder}
           />
       );
     }.bind(this));
@@ -100,17 +113,13 @@ var MenuCategory = React.createClass({
 
 var MenuItemComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
-  handleSelection: function(order){
-    CartCollection.add(order)
-  },
   render: function(){
     var model = this.props.model;
-    var boundItemClick = this.handleSelection.bind(this, model);
     return (
       <div>
-        <li onClick={boundItemClick} className="list-group-item" id="order-lists">
+        <li className="list-group-item" id="order-lists">
           <span className="food-selection">{model.get('Name')}</span>
-          <span className="price-selection">{model.get('Price')}</span>
+          <span onClick={this.props.addItemToOrder.bind(this, model)} className="price-selection"><button className="btn btn-primary">{model.get('Price')}</button></span>
         </li>
       </div>
     );
