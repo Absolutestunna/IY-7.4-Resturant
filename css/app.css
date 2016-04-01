@@ -5855,6 +5855,33 @@ button.close {
   margin-left: 80px;
   color: #FFF; }
 
-#order-lists .price-selection {
-  float: right; }
+#orders #order-title {
+  margin-left: 43%;
+  margin-bottom: 30px;
+  color: #4399E1; }
+#orders #order-heading {
+  border-bottom: 1px solid black;
+  padding-bottom: 2px; }
+  #orders #order-heading span:nth-child(2) {
+    float: right; }
+
+#order-lists {
+  height: 53px; }
+  #order-lists .price-selection {
+    float: right; }
+    #order-lists .price-selection button {
+      margin-top: -3px; }
+  #order-lists input {
+    width: 39px;
+    height: 27px;
+    margin-top: 1px; }
+
+.orders-list {
+  list-style: none;
+  padding-top: 10px; }
+  .orders-list div {
+    margin-top: 5px; }
+  .orders-list .order-price {
+    float: right; }
+
 /*# sourceMappingURL=app.css.map */
