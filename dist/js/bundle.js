@@ -22,15 +22,23 @@ var CartComponent = React.createClass({displayName: "CartComponent",
         order: item}
         )
     })
-
+    console.log(order)
     return (
       React.createElement("div", null, 
         React.createElement("div", {className: "col-md-4", id: "orders"}, 
-          React.createElement("h4", null, "ORDERS")
-        ), 
-        React.createElement("ul", null, 
-          order
+          React.createElement("h4", null, "ORDERS"), 
+          React.createElement("h4", {id: "order-title"}, "MAD CITY"), 
+          React.createElement("div", {id: "order-heading"}, 
+            React.createElement("span", null, "Item"), 
+            React.createElement("span", null, "Price")
+          ), 
+
+
+          React.createElement("div", {className: "orders-list"}, 
+            order
+          )
         )
+
       )
     );
   }
@@ -38,8 +46,10 @@ var CartComponent = React.createClass({displayName: "CartComponent",
 
 var OrderItem = React.createClass({displayName: "OrderItem",
   render: function(){
+
     return (
-      React.createElement("li", null, 
+
+      React.createElement("div", null, 
         React.createElement("span", null, this.props.order.get('Name')), 
         React.createElement("span", {className: "order-price"}, this.props.order.get('Price'))
       )
@@ -71,7 +81,10 @@ var MenuPageComponent = React.createClass({displayName: "MenuPageComponent",
   mixins: [Backbone.React.Component.mixin],
   getInitialState: function(){
     return (
-      {'total': 0}
+      {
+        'total': 0,
+        'qty': 0
+      }
     );
   },
   addItemToOrder: function(model, e){
@@ -168,11 +181,10 @@ var MenuItemComponent = React.createClass({displayName: "MenuItemComponent",
   render: function(){
     var model = this.props.model;
     return (
-      React.createElement("div", null, 
-        React.createElement("li", {className: "list-group-item", id: "order-lists"}, 
+        React.createElement("div", {className: "list-group-item", id: "order-lists"}, 
           React.createElement("span", {className: "food-selection"}, model.get('Name')), 
+          React.createElement("input", {type: "number"}), 
           React.createElement("span", {onClick: this.props.addItemToOrder.bind(this, model), className: "price-selection"}, React.createElement("button", {className: "btn btn-primary"}, model.get('Price')))
-        )
       )
     );
   }

@@ -18,7 +18,10 @@ var MenuPageComponent = React.createClass({displayName: "MenuPageComponent",
   mixins: [Backbone.React.Component.mixin],
   getInitialState: function(){
     return (
-      {'total': 0}
+      {
+        'total': 0,
+        'qty': 0
+      }
     );
   },
   addItemToOrder: function(model, e){
@@ -115,11 +118,10 @@ var MenuItemComponent = React.createClass({displayName: "MenuItemComponent",
   render: function(){
     var model = this.props.model;
     return (
-      React.createElement("div", null, 
-        React.createElement("li", {className: "list-group-item", id: "order-lists"}, 
+        React.createElement("div", {className: "list-group-item", id: "order-lists"}, 
           React.createElement("span", {className: "food-selection"}, model.get('Name')), 
+          React.createElement("input", {type: "number"}), 
           React.createElement("span", {onClick: this.props.addItemToOrder.bind(this, model), className: "price-selection"}, React.createElement("button", {className: "btn btn-primary"}, model.get('Price')))
-        )
       )
     );
   }

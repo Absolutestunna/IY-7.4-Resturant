@@ -20,15 +20,23 @@ var CartComponent = React.createClass({
         order = {item}
         />
     })
-
+    console.log(order)
     return (
       <div>
         <div className='col-md-4' id="orders">
           <h4>ORDERS</h4>
+          <h4 id="order-title">MAD CITY</h4>
+          <div id="order-heading">
+            <span>Item</span>
+            <span>Price</span>
+          </div>
+
+
+          <div className="orders-list">
+            {order}
+          </div>
         </div>
-        <ul>
-          {order}
-        </ul>
+
       </div>
     );
   }
@@ -36,11 +44,13 @@ var CartComponent = React.createClass({
 
 var OrderItem = React.createClass({
   render: function(){
+
     return (
-      <li>
+
+      <div>
         <span>{this.props.order.get('Name')}</span>
         <span className="order-price">{this.props.order.get('Price')}</span>
-      </li>
+      </div>
     );
   }
 });

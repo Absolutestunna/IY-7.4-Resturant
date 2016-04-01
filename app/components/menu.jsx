@@ -19,7 +19,10 @@ var MenuPageComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
   getInitialState: function(){
     return (
-      {'total': 0}
+      {
+        'total': 0,
+        'qty': 0
+      }
     );
   },
   addItemToOrder: function(model, e){
@@ -116,11 +119,10 @@ var MenuItemComponent = React.createClass({
   render: function(){
     var model = this.props.model;
     return (
-      <div>
-        <li className="list-group-item" id="order-lists">
+        <div className="list-group-item" id="order-lists">
           <span className="food-selection">{model.get('Name')}</span>
+          <input type="number" />
           <span onClick={this.props.addItemToOrder.bind(this, model)} className="price-selection"><button className="btn btn-primary">{model.get('Price')}</button></span>
-        </li>
       </div>
     );
   }

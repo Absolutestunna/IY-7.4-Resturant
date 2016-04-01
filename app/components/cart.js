@@ -19,15 +19,23 @@ var CartComponent = React.createClass({displayName: "CartComponent",
         order: item}
         )
     })
-
+    console.log(order)
     return (
       React.createElement("div", null, 
         React.createElement("div", {className: "col-md-4", id: "orders"}, 
-          React.createElement("h4", null, "ORDERS")
-        ), 
-        React.createElement("ul", null, 
-          order
+          React.createElement("h4", null, "ORDERS"), 
+          React.createElement("h4", {id: "order-title"}, "MAD CITY"), 
+          React.createElement("div", {id: "order-heading"}, 
+            React.createElement("span", null, "Item"), 
+            React.createElement("span", null, "Price")
+          ), 
+
+
+          React.createElement("div", {className: "orders-list"}, 
+            order
+          )
         )
+
       )
     );
   }
@@ -35,8 +43,10 @@ var CartComponent = React.createClass({displayName: "CartComponent",
 
 var OrderItem = React.createClass({displayName: "OrderItem",
   render: function(){
+
     return (
-      React.createElement("li", null, 
+
+      React.createElement("div", null, 
         React.createElement("span", null, this.props.order.get('Name')), 
         React.createElement("span", {className: "order-price"}, this.props.order.get('Price'))
       )
