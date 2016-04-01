@@ -28,7 +28,7 @@ var MenuPageComponent = React.createClass({
   addItemToOrder: function(model, e){
     e.preventDefault()
     this.props.cartCollection.add(model)
-    this.forceUpdate()
+    this.forceUpdate();
   },
   render: function(){
     var categorySelection = _.uniq(this.props.collection.pluck('Category'));
