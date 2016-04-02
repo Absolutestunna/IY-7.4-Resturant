@@ -69,7 +69,8 @@ var MenuPageComponent = React.createClass({displayName: "MenuPageComponent",
                 )
             ), 
             React.createElement(CartComponent, {
-              cartCollection: this.props.cartCollection}
+              cartCollection: this.props.cartCollection, 
+              orderCollection: this.props.orderCollection}
                )
           )
         )
@@ -118,17 +119,12 @@ var MenuCategory = React.createClass({displayName: "MenuCategory",
 
 var MenuItemComponent = React.createClass({displayName: "MenuItemComponent",
   mixins: [Backbone.React.Component.mixin],
-  handleAddQty: function(e){
-    console.log(e.target.value)
-    this.forceUpdate();
-
-  },
   render: function(){
     var model = this.props.model;
     return (
         React.createElement("div", {className: "list-group-item", id: "order-lists"}, 
           React.createElement("span", {className: "food-selection"}, model.get('Name')), 
-          React.createElement("span", {onClick: this.props.addItemToOrder.bind(this, model), className: "price-selection"}, React.createElement("button", {className: "btn btn-primary"}, model.get('Price')/1000))
+          React.createElement("span", {onClick: this.props.addItemToOrder.bind(this, model), className: "price-selection"}, React.createElement("button", {className: "btn btn-primary"}, "$", (model.get('Price')/1000).toFixed(2)))
         )
     );
   }

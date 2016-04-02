@@ -7,7 +7,6 @@ var $ = require('jquery');
 var WelcomePage = require('./../../components/welcome.jsx');
 var MenuInfoPage = require('./../../components/menu.jsx');
 var CartInfoPage = require('./../../components/cart.jsx');
-var FinalPage = require('./../../components/finalPage.jsx');
 
 var Orders = require('../collections/orderItems').OrderCollection;
 var Models = require('../collections/menuItemsCollection');
@@ -18,14 +17,13 @@ var menuItemsJson = require('../menuitems.json');
 var cartModel = new CartModels.CartModel();
 var menuCollection = new Models.MenuCollection(menuItemsJson);
 var cartCollection = new CartModels.CartCollection();
-var orders = new Orders();
-
+var orderCollection = new Orders();
+console.log(orderCollection)
 
 var Router = Backbone.Router.extend({
   routes: {
     '': 'welcome',
     'menu': 'menuInteract',
-    'finalPage': 'finalPage'
   },
   welcome: function(){
     ReactDOM.render(
@@ -38,15 +36,11 @@ var Router = Backbone.Router.extend({
         MenuInfoPage,
         {
           collection: menuCollection,
-          cartCollection: cartCollection
+          cartCollection: cartCollection,
+          orderCollection: orderCollection
         }), document.getElementById('app')
     );
-  },
-  finalPage: function(){
-    ReactDOM.render(
-      React.createElement(FinalPage, {orderCollection: orders}), document.getElementById('app')
-    );
-  },
+  }
 });
 
 module.exports = Router;

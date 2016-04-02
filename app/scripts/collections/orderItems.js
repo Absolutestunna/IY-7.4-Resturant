@@ -1,8 +1,6 @@
 var Backbone = require('backbone');
 
-var OrderModel = Backbone.Model.extend({
-
-});
+var OrderModel = Backbone.Model.extend({});
 
 var OrderCollection = Backbone.Collection.extend({
   model: OrderModel,
@@ -11,4 +9,4 @@ var OrderCollection = Backbone.Collection.extend({
 
 module.exports = {
   'OrderCollection': OrderCollection
-}
+};

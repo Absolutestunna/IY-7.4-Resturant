@@ -3,26 +3,37 @@ var ReactDOM = require('react-dom');
 var $ = require('jquery');
 var _ = require('underscore');
 require('backbone-react-component');
+var Modal = require("react-awesome-modal");
+
 
 var MenuComponent = require('./menu.jsx');
-var FinalPageComponent = require('./finalPage.jsx');
-
 
 
 var CartComponent = React.createClass({displayName: "CartComponent",
   mixins: [Backbone.React.Component.mixin],
   getInitialState: function(){
     return {
-      'total': 0
+      'total': 0,
+      visible: false
     }
+  },
+  openModal: function(){
+    this.setState({
+      visible: true
+    })
+  },
+  closeModal: function(){
+    this.setState({
+      visible: false
+    })
+    location.reload();
+    this.forceUpdate();
+
   },
   componentWillMount: function(){
     this.props.cartCollection.on('update', function(){
       this.forceUpdate();
     }.bind(this))
-  },
-  cartTotal: function(number){
-
   },
   handleFinalOrder: function(e){
     var order_prices = [];
@@ -35,14 +46,12 @@ var CartComponent = React.createClass({displayName: "CartComponent",
     var total = _.reduce(order_prices, function(first, second){
       return first + second;
     }, 0)/(1000);
-    this.setState({'total': total})
-    console.log(total, order_items)
-
-
-
-
-
-
+    this.setState({'total': total.toFixed(2)})
+    {/*this.props.orderCollection.create({
+      'orders': order_items,
+      'total': this.state.total
+    })*/}
+    this.openModal();
   },
   render: function(){
     var order = this.props.cartCollection.map(function(item){
@@ -66,7 +75,20 @@ var CartComponent = React.createClass({displayName: "CartComponent",
             order
           ), 
           React.createElement("button", {onClick: this.handleFinalOrder, className: "btn btn-success"}, "Place Order")
-        )
+        ), 
+
+          React.createElement(Modal, {
+              visible: this.state.visible, 
+              width: "400", 
+              height: "300", 
+              effect: "fadeInRight"}, 
+              React.createElement("div", {className: "order-info"}, 
+                React.createElement("h2", {className: "order-information"}, "Order Info"), 
+                  React.createElement("h4", {className: "order-total"}, "Your total order is: $", this.state.total), 
+                  React.createElement("p", {className: "gratitude"}, "Thank you for your order!"), 
+                  React.createElement("button", {className: "btn btn-success close-modal", href: "javascript:void(0);", onClick: this.closeModal}, "Close")
+              )
+          )
       )
     );
   }
@@ -83,7 +105,7 @@ var OrderItem = React.createClass({displayName: "OrderItem",
       React.createElement("div", {className: "item"}, 
         React.createElement("span", null, this.props.order.get('Name')), 
         React.createElement("input", {onClick: this.handleDelete, type: "submit", className: "btn btn-danger", value: "X"}), 
-        React.createElement("span", {className: "order-price"}, this.props.order.get('Price')/1000)
+        React.createElement("span", {className: "order-price"}, "$", (this.props.order.get('Price')/1000).toFixed(2))
       )
     );
   }

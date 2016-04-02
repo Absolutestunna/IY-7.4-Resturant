@@ -71,6 +71,7 @@ var MenuPageComponent = React.createClass({
             </div>
             <CartComponent
               cartCollection={this.props.cartCollection}
+              orderCollection={this.props.orderCollection}
                />
           </div>
         </div>
@@ -119,17 +120,12 @@ var MenuCategory = React.createClass({
 
 var MenuItemComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
-  handleAddQty: function(e){
-    console.log(e.target.value)
-    this.forceUpdate();
-
-  },
   render: function(){
     var model = this.props.model;
     return (
         <div className="list-group-item" id="order-lists">
           <span className="food-selection">{model.get('Name')}</span>
-          <span onClick={this.props.addItemToOrder.bind(this, model)} className="price-selection"><button className="btn btn-primary">{model.get('Price')/1000}</button></span>
+          <span onClick={this.props.addItemToOrder.bind(this, model)} className="price-selection"><button className="btn btn-primary">${(model.get('Price')/1000).toFixed(2)}</button></span>
         </div>
     );
   }

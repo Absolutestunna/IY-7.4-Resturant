@@ -5943,4 +5943,23 @@ button.close {
     height: 25px;
     width: 25px; }
 
+.order-info .order-information {
+  height: 50px;
+  background-color: #E2CACA;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-left: 120px;
+  padding-top: 5px; }
+.order-info .order-total {
+  color: #65DC8D;
+  margin-top: 59px;
+  margin-left: 97px; }
+.order-info .gratitude {
+  margin-top: 20px;
+  margin-left: 120px;
+  margin-top: 45px; }
+.order-info button {
+  margin-top: 5px;
+  margin-left: 170px; }
+
 /*# sourceMappingURL=app.css.map */

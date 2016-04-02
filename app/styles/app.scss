@@ -177,3 +177,29 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
       width: 25px;
     }
   }
+
+/////////MODAL INFO/////////////////
+.order-info {
+    .order-information {
+      height: 50px;
+      background-color: #E2CACA;
+      margin-top: 0;
+      margin-bottom: 20px;
+      padding-left: 120px;
+      padding-top: 5px;
+    }
+    .order-total {
+      color: #65DC8D;
+      margin-top: 59px;
+      margin-left: 97px;
+    }
+    .gratitude {
+      margin-top: 20px;
+      margin-left: 120px;
+      margin-top: 45px;
+    }
+    button {
+      margin-top: 5px;
+      margin-left: 170px;
+    }
+}
