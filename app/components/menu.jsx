@@ -17,25 +17,26 @@ var CartComponent = require('./cart.jsx');
 
 var MenuPageComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
-  getInitialState: function(){
-    return (
-      {
-        'total': 0,
-        'qty': 0
-      }
-    );
-  },
+
   addItemToOrder: function(model, e){
+    var clone_model = model;
     e.preventDefault()
-    this.props.cartCollection.add(model)
+    this.props.cartCollection.add(clone_model)
     this.forceUpdate();
   },
+
   render: function(){
     var categorySelection = _.uniq(this.props.collection.pluck('Category'));
     var menuShow = categorySelection.map(function(item){
       var selected = this.props.collection.where({Category: item});
       return(
-        <MenuCategory categoryName={item} key={item} collection={selected} addItemToOrder={this.addItemToOrder} />
+        <MenuCategory
+          handleAddQty={this.handleAddQty}
+          categoryName={item}
+          key={item}
+          collection={selected}
+          addItemToOrder={this.addItemToOrder}
+           />
       )
 
     }.bind(this));
@@ -51,9 +52,9 @@ var MenuPageComponent = React.createClass({
              <div className="col-md-12 header-bottom">
                <div className="col-md-12 header-overlay">
                  <div className="header-bottom-contents col-md-12">
-                       <p>Mad Thai Resturant</p>
-                       <p>Times</p>
-                       <p>Address</p>
+                     <p>Mad Thai Resturant</p>
+                     <p>Times</p>
+                     <p>Address</p>
                   </div>
                </div>
              </div>
@@ -87,6 +88,8 @@ var MenuCategory = React.createClass({
           key={item.cid}
           model={item}
           addItemToOrder={this.props.addItemToOrder}
+          handleAddQty={this.props.handleAddQty}
+
           />
       );
     }.bind(this));
@@ -103,9 +106,9 @@ var MenuCategory = React.createClass({
             </div>
 
               <div id="collapseListGroup1" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseListGroupHeading1" aria-expanded="true">
-                  <ul className="list-group">
+                  <div className="list-group">
                     {menuSelection}
-                  </ul>
+                  </div>
               </div>
             </div>
           </div>
@@ -116,17 +119,20 @@ var MenuCategory = React.createClass({
 
 var MenuItemComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
+  handleAddQty: function(e){
+    console.log(e.target.value)
+    this.forceUpdate();
+
+  },
   render: function(){
     var model = this.props.model;
     return (
         <div className="list-group-item" id="order-lists">
           <span className="food-selection">{model.get('Name')}</span>
-          <input type="number" />
-          <span onClick={this.props.addItemToOrder.bind(this, model)} className="price-selection"><button className="btn btn-primary">{model.get('Price')}</button></span>
-      </div>
+          <span onClick={this.props.addItemToOrder.bind(this, model)} className="price-selection"><button className="btn btn-primary">{model.get('Price')/1000}</button></span>
+        </div>
     );
   }
 });
-
 
 module.exports = MenuPageComponent;

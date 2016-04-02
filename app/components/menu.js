@@ -16,25 +16,26 @@ var CartComponent = require('./cart.jsx');
 
 var MenuPageComponent = React.createClass({displayName: "MenuPageComponent",
   mixins: [Backbone.React.Component.mixin],
-  getInitialState: function(){
-    return (
-      {
-        'total': 0,
-        'qty': 0
-      }
-    );
-  },
+
   addItemToOrder: function(model, e){
+    var clone_model = model;
     e.preventDefault()
-    this.props.cartCollection.add(model)
+    this.props.cartCollection.add(clone_model)
     this.forceUpdate();
   },
+
   render: function(){
     var categorySelection = _.uniq(this.props.collection.pluck('Category'));
     var menuShow = categorySelection.map(function(item){
       var selected = this.props.collection.where({Category: item});
       return(
-        React.createElement(MenuCategory, {categoryName: item, key: item, collection: selected, addItemToOrder: this.addItemToOrder})
+        React.createElement(MenuCategory, {
+          handleAddQty: this.handleAddQty, 
+          categoryName: item, 
+          key: item, 
+          collection: selected, 
+          addItemToOrder: this.addItemToOrder}
+           )
       )
 
     }.bind(this));
@@ -50,9 +51,9 @@ var MenuPageComponent = React.createClass({displayName: "MenuPageComponent",
              React.createElement("div", {className: "col-md-12 header-bottom"}, 
                React.createElement("div", {className: "col-md-12 header-overlay"}, 
                  React.createElement("div", {className: "header-bottom-contents col-md-12"}, 
-                       React.createElement("p", null, "Mad Thai Resturant"), 
-                       React.createElement("p", null, "Times"), 
-                       React.createElement("p", null, "Address")
+                     React.createElement("p", null, "Mad Thai Resturant"), 
+                     React.createElement("p", null, "Times"), 
+                     React.createElement("p", null, "Address")
                   )
                )
              )
@@ -85,7 +86,9 @@ var MenuCategory = React.createClass({displayName: "MenuCategory",
         React.createElement(MenuItemComponent, {
           key: item.cid, 
           model: item, 
-          addItemToOrder: this.props.addItemToOrder}
+          addItemToOrder: this.props.addItemToOrder, 
+          handleAddQty: this.props.handleAddQty}
+
           )
       );
     }.bind(this));
@@ -102,7 +105,7 @@ var MenuCategory = React.createClass({displayName: "MenuCategory",
             ), 
 
               React.createElement("div", {id: "collapseListGroup1", className: "panel-collapse collapse in", role: "tabpanel", "aria-labelledby": "collapseListGroupHeading1", "aria-expanded": "true"}, 
-                  React.createElement("ul", {className: "list-group"}, 
+                  React.createElement("div", {className: "list-group"}, 
                     menuSelection
                   )
               )
@@ -115,17 +118,20 @@ var MenuCategory = React.createClass({displayName: "MenuCategory",
 
 var MenuItemComponent = React.createClass({displayName: "MenuItemComponent",
   mixins: [Backbone.React.Component.mixin],
+  handleAddQty: function(e){
+    console.log(e.target.value)
+    this.forceUpdate();
+
+  },
   render: function(){
     var model = this.props.model;
     return (
         React.createElement("div", {className: "list-group-item", id: "order-lists"}, 
           React.createElement("span", {className: "food-selection"}, model.get('Name')), 
-          React.createElement("input", {type: "number"}), 
-          React.createElement("span", {onClick: this.props.addItemToOrder.bind(this, model), className: "price-selection"}, React.createElement("button", {className: "btn btn-primary"}, model.get('Price')))
-      )
+          React.createElement("span", {onClick: this.props.addItemToOrder.bind(this, model), className: "price-selection"}, React.createElement("button", {className: "btn btn-primary"}, model.get('Price')/1000))
+        )
     );
   }
 });
-
 
 module.exports = MenuPageComponent;

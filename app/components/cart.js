@@ -5,20 +5,44 @@ var _ = require('underscore');
 require('backbone-react-component');
 
 var MenuComponent = require('./menu.jsx');
+var FinalPageComponent = require('./finalPage.jsx');
+
 
 
 var CartComponent = React.createClass({displayName: "CartComponent",
   mixins: [Backbone.React.Component.mixin],
+  getInitialState: function(){
+    return {
+      'total': 0
+    }
+  },
   componentWillMount: function(){
     this.props.cartCollection.on('update', function(){
       this.forceUpdate();
     }.bind(this))
   },
+  cartTotal: function(number){
+
+  },
   handleFinalOrder: function(e){
-    console.log('working');
+    var order_prices = [];
+    var order_items = [];
+
     this.props.cartCollection.map(function(model){
-      console.log(model.get('Price'))
+      order_prices.push(model.get('Price'));
+      order_items.push(model.get('Name'))
     });
+    var total = _.reduce(order_prices, function(first, second){
+      return first + second;
+    }, 0)/(1000);
+    this.setState({'total': total})
+    console.log(total, order_items)
+
+
+
+
+
+
   },
   render: function(){
     var order = this.props.cartCollection.map(function(item){
@@ -41,7 +65,7 @@ var CartComponent = React.createClass({displayName: "CartComponent",
           React.createElement("div", {className: "orders-list"}, 
             order
           ), 
-          React.createElement("button", {onClick: this.handleFinalOrder, className: "btn btn-success"}, "Add to Order")
+          React.createElement("button", {onClick: this.handleFinalOrder, className: "btn btn-success"}, "Place Order")
         )
       )
     );
@@ -59,7 +83,7 @@ var OrderItem = React.createClass({displayName: "OrderItem",
       React.createElement("div", {className: "item"}, 
         React.createElement("span", null, this.props.order.get('Name')), 
         React.createElement("input", {onClick: this.handleDelete, type: "submit", className: "btn btn-danger", value: "X"}), 
-        React.createElement("span", {className: "order-price"}, this.props.order.get('Price'))
+        React.createElement("span", {className: "order-price"}, this.props.order.get('Price')/1000)
       )
     );
   }

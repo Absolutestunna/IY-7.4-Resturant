@@ -1,15 +1,14 @@
-var Backbone = require('backbone');
+ var Backbone = require('backbone');
 
-var MenuModel = Backbone.Model.extend({
+ var MenuModel = Backbone.Model.extend({
 
-});
+ });
 
-var MenuCollection = Backbone.Collection.extend({
-  model: MenuModel,
-  url: 'http://tiny-lasagna-server.herokuapp.com/collections/orders'
-});
+ var MenuCollection = Backbone.Collection.extend({
+   model: MenuModel,
+ });
 
-module.exports = {
-  'MenuModel': MenuModel,
-  'MenuCollection': MenuCollection
-};
+ module.exports = {
+   'MenuModel': MenuModel,
+   'MenuCollection': MenuCollection
+ };

@@ -5922,11 +5922,13 @@ button.close {
   #order-lists .price-selection {
     float: right; }
     #order-lists .price-selection button {
-      margin-top: -3px; }
+      margin-top: -2px; }
   #order-lists input {
-    width: 39px;
+    width: 50px;
     height: 27px;
-    margin-top: 1px; }
+    margin-top: 1px;
+    margin-right: 45px;
+    float: right; }
 
 .orders-list {
   list-style: none;
