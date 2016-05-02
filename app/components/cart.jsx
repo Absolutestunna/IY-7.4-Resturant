@@ -48,10 +48,10 @@ var CartComponent = React.createClass({
       return first + second;
     }, 0)/(1000);
     this.setState({'total': total.toFixed(2)})
-    {/*this.props.orderCollection.create({
+    this.props.orderCollection.create({
       'orders': order_items,
       'total': this.state.total
-    })*/}
+    });
     this.openModal();
   },
   render: function(){
