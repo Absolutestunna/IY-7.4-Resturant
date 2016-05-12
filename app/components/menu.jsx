@@ -44,19 +44,12 @@ var MenuPageComponent = React.createClass({
       <div>
         <div className="container-fluid" id="fluid">
            <div className="row">
-              <div className="header-top col-md-12">
-                <div className="header-top-contents">
-                  <span className="title">MAD CITY</span>
-                </div>
-             </div>
              <div className="col-md-12 header-bottom">
-               <div className="col-md-12 header-overlay">
+               <div className="col-md-12 header-overlay"></div>
                  <div className="header-bottom-contents col-md-12">
-                     <p>Mad Thai Resturant</p>
-                     <p>Times</p>
-                     <p>Address</p>
-                  </div>
-               </div>
+                   <h5>Welcome to</h5>
+                   <h1 className="title">MAD CITY</h1>
+                 </div>
              </div>
            </div>
          </div>

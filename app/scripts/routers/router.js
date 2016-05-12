@@ -18,7 +18,7 @@ var cartModel = new CartModels.CartModel();
 var menuCollection = new Models.MenuCollection(menuItemsJson);
 var cartCollection = new CartModels.CartCollection();
 var orderCollection = new Orders();
-console.log(orderCollection)
+
 
 var Router = Backbone.Router.extend({
   routes: {

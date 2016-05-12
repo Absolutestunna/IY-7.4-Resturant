@@ -43,19 +43,12 @@ var MenuPageComponent = React.createClass({displayName: "MenuPageComponent",
       React.createElement("div", null, 
         React.createElement("div", {className: "container-fluid", id: "fluid"}, 
            React.createElement("div", {className: "row"}, 
-              React.createElement("div", {className: "header-top col-md-12"}, 
-                React.createElement("div", {className: "header-top-contents"}, 
-                  React.createElement("span", {className: "title"}, "MAD CITY")
-                )
-             ), 
              React.createElement("div", {className: "col-md-12 header-bottom"}, 
-               React.createElement("div", {className: "col-md-12 header-overlay"}, 
+               React.createElement("div", {className: "col-md-12 header-overlay"}), 
                  React.createElement("div", {className: "header-bottom-contents col-md-12"}, 
-                     React.createElement("p", null, "Mad Thai Resturant"), 
-                     React.createElement("p", null, "Times"), 
-                     React.createElement("p", null, "Address")
-                  )
-               )
+                   React.createElement("h5", null, "Welcome to"), 
+                   React.createElement("h1", {className: "title"}, "MAD CITY")
+                 )
              )
            )
          ), 
