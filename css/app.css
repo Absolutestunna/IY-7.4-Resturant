@@ -5761,63 +5761,35 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+body {
+  width: 1280px; }
+
 #app {
   width: 1280px;
   padding: 0; }
 
-#welcomeVid {
+.first-el {
+  margin: 0;
+  height: 500px;
   width: 100%;
-  position: relative;
-  display: block;
-  top: 0;
-  left: 0;
-  position: fixed; }
+  border: 1px solid black; }
+  .first-el .welcome-body {
+    color: black;
+    margin-top: 144px;
+    margin-left: 405px; }
 
-.overlay {
-  position: absolute;
-  background-color: black;
-  opacity: 0.4;
-  top: 0;
-  left: 0;
-  height: 725px;
-  width: 100%;
-  z-index: 1; }
-  .overlay .overlay-content {
-    width: 60%;
-    margin-top: 290px;
-    margin-left: 290px;
-    position: relative; }
-    .overlay .overlay-content p {
-      font-family: 'Oswald', sans-serif;
-      color: #FFF;
-      margin-bottom: 55px; }
-    .overlay .overlay-content .first {
-      text-align: center;
-      font-size: 100px; }
-    .overlay .overlay-content .second {
-      font-size: 24px;
-      text-align: center; }
-      .overlay .overlay-content .second:before {
-        content: ". . . . . . . .";
-        float: left;
-        margin-left: 30%;
-        margin-top: -6px; }
-      .overlay .overlay-content .second:after {
-        content: ". . . . . . . .";
-        float: right;
-        margin-right: 30%;
-        margin-top: -6px; }
-    .overlay .overlay-content .welcome {
-      margin-top: 200px;
-      text-align: center;
-      font-family: 'Nunito', sans-serif;
-      font-size: 24px;
-      color: #FFF; }
-      .overlay .overlay-content .welcome a {
-        color: #FFF;
-        font-size: 24px;
-        text-decoration: none;
-        margin-right: 5px; }
+.welcome-nav {
+  float: right; }
+
+.second-el .address {
+  margin-left: 15px;
+  margin-bottom: 10px; }
+  .second-el .address span {
+    margin-left: 15px; }
+.second-el .telephone {
+  margin-left: 15px; }
+  .second-el .telephone span {
+    margin-left: 15px; }
 
 .header-top .header-top-contents {
   height: 50px;
@@ -5834,25 +5806,23 @@ button.close {
   padding: 0; }
 
 .header-bottom {
-  background: url("https://pixabay.com/get/e03db90c2ef01c22d2524518a33219c8b66ae3d11cb912409df6c570/taxi-988364_1280.jpg") fixed center;
-  height: 300px;
+  background: url("./../images/backgroundres.jpg") fixed center;
+  height: 500px;
   width: 100%;
   position: relative; }
 
 .header-overlay {
-  height: 300px;
+  height: 100%;
   width: 100%;
   position: absolute;
   background-color: black;
   opacity: 0.7;
   top: 0;
-  left: 0;
-  z-index: 1; }
+  left: 0; }
 
 .header-bottom-contents {
-  padding: 0;
-  width: 87%;
-  margin-left: 80px;
+  position: relative;
+  margin-top: 80px;
   color: #FFF; }
 
 #orders #order-title {
@@ -5913,4 +5883,5 @@ button.close {
 .order-info button {
   margin-top: 5px;
   margin-left: 170px; }
+
 /*# sourceMappingURL=app.css.map */
