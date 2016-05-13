@@ -5,33 +5,91 @@ $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 // Import Bootstrap
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 body {
-  width: 1280px;
+  background-color: #DED6DA;
 }
 #app{
-
-  width: 1280px;
   padding: 0;
-
 }
+
+
 ////////////////////////////////////WELCOME PAGE////////////////////////////////
 
 
 .first-el {
+  background-image:   url('http://41.media.tumblr.com/ce2e0838a37e227525f4f0b4a489ab33/tumblr_mp090bHl351qft0roo1_1280.jpg');
+  background-position: 0;
   margin: 0;
   height: 500px;
-  width: 100%;
-  border: 1px solid black;
-  .welcome-body {
-    color: black;
-    margin-top: 144px;
-    margin-left: 405px;
-  }
+  background-color: black;
+  opacity: 0.7;
 }
 
-.welcome-nav {
-  float: right;
+.welcome-body {
+  color: #FFF;
+  h4, h1 {
+    margin: 0;
+  }
+
+  // margin-top: 145px;
+  // margin-left: 450px;
 }
+.welcome-nav {
+  // float: right;
+  margin-top: 320px;
+
+  .button {
+  border-radius: 4px;
+  background-color: #8B2089;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 19px;
+  padding: 20px;
+  width: 100%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+}
+
+
+
 .second-el {
+  margin: 0;
+  section {
+    border: 6px solid black;
+    height: 290px;
+    padding-bottom: 5px;
+    h2 {
+      margin-top: 12px;
+    }
+  }
   .address {
     margin-left: 15px;
     margin-bottom: 10px;

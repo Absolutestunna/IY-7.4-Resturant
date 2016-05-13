@@ -15,14 +15,17 @@ var WelcomePageComponent = React.createClass({
       <div>
         <div className="row first-el">
           <div className="col-md-12">
-            <div className="welcome-nav">
-              <span>Go to </span><a onClick={this.handleWebsiteAccess}>Menu</a><i className="icon-chevron-right"></i>
+            <div className="welcome-body row">
+              <div className="col-md-4 col-sm-8 col-xs-12">
+                <h4>Welcome to</h4>
+                <h1>MAD CITY RECIPIES</h1>
+              </div>
             </div>
-            <div className="welcome-body">
-              <h4>Welcome to</h4>
-              <h1>MAD CITY RECIPIES</h1>
+            <div className="welcome-nav row">
+              <div className="col-md-3 col-md-offset-9 col-sm-4 col-sm-offset-8 col-xs-9 col-xs-offset-3">
+                <button onClick={this.handleWebsiteAccess} className="button"><span>Proceed to Menu </span></button>
+              </div>
             </div>
-
           </div>
         </div>
         <div className="row second-el">
@@ -30,6 +33,8 @@ var WelcomePageComponent = React.createClass({
             <h2>About</h2>
             <p>Mad City offers authentic Nigerian dishes highlighting the best dishes from diverse cultural groups in Nigeria.</p>
             <p>The food is known for spicy flavors and unequivocally African.</p>
+            <p>Do you want some of Nigeria's best dishes catered to your event?</p>
+            <p>Feel free to give us a call for a quote!</p>
           </section>
           <section className="col-md-4">
             <h2>Contact</h2>
@@ -40,15 +45,20 @@ var WelcomePageComponent = React.createClass({
           <section className="col-md-4">
             <h2>Hours</h2>
             <p>Sun: Closed</p>
-            <p>Mon: 9a.m - 9p.m</p>
-            <p>Tue: 9a.m - 9p.m</p>
-            <p>Wed: 9a.m - 9p.m</p>
-            <p>Thur: 9a.m - 9p.m</p>
-            <p>Fri: 9a.m - 9p.m</p>
+            <p>Mon: 9 a.m - 9 p.m</p>
+            <p>Tue: 9 a.m - 9 p.m</p>
+            <p>Wed: 9 a.m - 9 p.m</p>
+            <p>Thur: 9 a.m - 9 p.m</p>
+            <p>Fri: 9 a.m - 9 p.m</p>
+            <p>Sat: 9 a.m - 9 p.m</p>
+
 
           </section>
 
         </div>
+        <footer>
+
+        </footer>
     </div>
     );
   }
