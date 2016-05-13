@@ -5762,34 +5762,76 @@ button.close {
   .hidden-print {
     display: none !important; } }
 body {
-  width: 1280px; }
+  background-color: #DED6DA; }
 
 #app {
-  width: 1280px;
   padding: 0; }
 
 .first-el {
+  background-image: url("http://41.media.tumblr.com/ce2e0838a37e227525f4f0b4a489ab33/tumblr_mp090bHl351qft0roo1_1280.jpg");
+  background-position: 0;
   margin: 0;
   height: 500px;
-  width: 100%;
-  border: 1px solid black; }
-  .first-el .welcome-body {
-    color: black;
-    margin-top: 144px;
-    margin-left: 405px; }
+  background-color: black;
+  opacity: 0.7; }
+
+.welcome-body {
+  color: #FFF; }
+  .welcome-body h4, .welcome-body h1 {
+    margin: 0; }
 
 .welcome-nav {
-  float: right; }
+  margin-top: 320px; }
+  .welcome-nav .button {
+    border-radius: 4px;
+    background-color: #8B2089;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 19px;
+    padding: 20px;
+    width: 100%;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px; }
+  .welcome-nav .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    -webkit-transition: 0.5s;
+    transition: 0.5s; }
+  .welcome-nav .button span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s; }
+  .welcome-nav .button:hover span {
+    padding-right: 25px; }
+  .welcome-nav .button:hover span:after {
+    opacity: 1;
+    right: 0; }
 
-.second-el .address {
-  margin-left: 15px;
-  margin-bottom: 10px; }
-  .second-el .address span {
+.second-el {
+  margin: 0; }
+  .second-el section {
+    border: 6px solid black;
+    height: 290px;
+    padding-bottom: 5px; }
+    .second-el section h2 {
+      margin-top: 12px; }
+  .second-el .address {
+    margin-left: 15px;
+    margin-bottom: 10px; }
+    .second-el .address span {
+      margin-left: 15px; }
+  .second-el .telephone {
     margin-left: 15px; }
-.second-el .telephone {
-  margin-left: 15px; }
-  .second-el .telephone span {
-    margin-left: 15px; }
+    .second-el .telephone span {
+      margin-left: 15px; }
 
 .header-top .header-top-contents {
   height: 50px;
