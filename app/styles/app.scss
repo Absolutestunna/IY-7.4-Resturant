@@ -16,12 +16,11 @@ body {
 
 
 .first-el {
-  background-image:   url('http://41.media.tumblr.com/ce2e0838a37e227525f4f0b4a489ab33/tumblr_mp090bHl351qft0roo1_1280.jpg');
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3f/Nigeria_cola_nuts.jpg');
   background-position: 0;
   margin: 0;
   height: 500px;
-  background-color: black;
-  opacity: 0.7;
+  background-size: cover;
 }
 
 .welcome-body {
@@ -29,17 +28,12 @@ body {
   h4, h1 {
     margin: 0;
   }
-
-  // margin-top: 145px;
-  // margin-left: 450px;
 }
 .welcome-nav {
-  // float: right;
   margin-top: 320px;
-
   .button {
   border-radius: 4px;
-  background-color: #8B2089;
+  background-color: #872A3B;
   border: none;
   color: #FFFFFF;
   text-align: center;
@@ -78,8 +72,6 @@ body {
 
 }
 
-
-
 .second-el {
   margin: 0;
   section {
@@ -105,47 +97,22 @@ body {
   }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-.header-top {
-  .header-top-contents {
-    height: 50px;
-    margin: 0 auto;
-    width: 87%;
-    .title {
-      display: inherit;
-      text-align: center;
-      font-size: 38px;
-      margin-top: 15px;
-     font-family: 'Oswald', sans-serif;
 
-    }
-  }//end of header-top-contents
-}//end of header-top
+/////////////////////////////////MENU PAGE//////////////////////////////////////
+
+
+
 #fluid {
   padding: 0;
 }
 .header-bottom {
-
-  background: url("./../images/backgroundres.jpg")fixed center;
+  background: url("http://media1.tourobzor.com/cmp_bae074dee58b1c631b9b5e8cc997.jpg");
+  background-size: cover;
   height: 500px;
   width: 100%;
-  position: relative;
+}
 
-}
-.header-overlay {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background-color: black;
-  opacity: 0.7;
-  top: 0;
-  left: 0;
-}
-.header-bottom-contents {
-  position: relative;
-  margin-top: 80px;
-  color: #FFF;
-}
+
 #orders {
   #order-title {
     margin-left: 43%;
@@ -198,7 +165,10 @@ body {
     }
   }
 
-/////////MODAL INFO/////////////////
+
+/////////////////////////////////MODAL INFO///////////////////////////////////
+
+
 .order-info {
     .order-information {
       height: 50px;

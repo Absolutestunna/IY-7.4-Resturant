@@ -42,18 +42,7 @@ var MenuPageComponent = React.createClass({
     }.bind(this));
     return (
       <div>
-        <div className="container-fluid" id="fluid">
-           <div className="row">
-             <div className="col-md-12 header-bottom">
-               <div className="col-md-12 header-overlay"></div>
-                 <div className="header-bottom-contents col-md-12">
-                   <h5>Welcome to</h5>
-                   <h1 className="title">MAD CITY</h1>
-                 </div>
-             </div>
-           </div>
-         </div>
-
+        <div className="container-fluid header-bottom" id="fluid"></div>
         <div className="container">
           <div className="row">
             <div className="col-md-8">

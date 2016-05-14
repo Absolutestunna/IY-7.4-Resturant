@@ -8,3 +8,5 @@ Understand how to design and execute a front end application given ambiguous req
 Understand how all of the pieces of Backbone + React fit together to create a dynamic front-end application.
 
 Tools: Backbone.js, React.js, HTML, CSS/SASS.
+Image credits:
+  a.  landing page background image: wikimedia.org (https://upload.wikimedia.org/wikipedia/commons/3/3f/Nigeria_cola_nuts.jpg)
